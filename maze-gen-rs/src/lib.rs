@@ -40,10 +40,15 @@ impl Maze {
         self.display();
         thread::sleep(self.speed);
 
-        let mut shuffled = DIR.clone();
-        fastrand::shuffle(&mut shuffled);
+        let mut dirs = [
+            Point { x: 0, y: -2 },
+            Point { x: -2, y: 0 },
+            Point { x: 0, y: 2 },
+            Point { x: 2, y: 0 },
+        ];
+        fastrand::shuffle(&mut dirs);
 
-        for dir in shuffled {
+        for dir in dirs {
             match self.field[(current.y + dir.y) as usize][(current.x + dir.x) as usize] {
                 Cell::Block => {
                     // 穴を2つ開ける
@@ -72,14 +77,6 @@ impl Maze {
         }
     }
 }
-
-/// セルを見渡す方向のリスト
-const DIR: [Point; 4] = [
-    Point { x: 0, y: -2 },
-    Point { x: -2, y: 0 },
-    Point { x: 0, y: 2 },
-    Point { x: 2, y: 0 },
-];
 
 /// セルの種類
 #[derive(Clone)]
