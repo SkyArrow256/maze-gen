@@ -14,7 +14,7 @@ class Maze
 	/// <summary>
 	/// 迷路の生成スピード
 	/// </summary>
-	private readonly int speed;
+	private readonly TimeSpan speed;
 
 	/// <summary>
 	/// 迷路の盤を作成する
@@ -23,7 +23,7 @@ class Maze
 	/// <param name="height">盤の高さ。奇数である必要があります</param>
 	/// <param name="start">スタート地点。偶数である必要があります</param>
 	/// <param name="speed">迷路の生成スピード</param>
-	public Maze(int width, int height, Point start, int speed)
+	public Maze(int width, int height, Point start, TimeSpan speed)
 	{
 		field = new List<List<Cell>>(height);
 
